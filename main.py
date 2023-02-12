@@ -1,11 +1,6 @@
 from pyrogram import Client, filters
-from configparser import ConfigParser
 from time import sleep
 import requests
-
-config = ConfigParser()
-config.read("conf.ini")
-
 
 api_id = 23590867
 api_hash = "ec608246f420f6d386bfdbc08d427b35"
@@ -26,24 +21,44 @@ def send(_, msg):
             value = value[1].split("\n")
             print(value[0])
         
-    place = msg.text.split("📍 ")
-    place = place[1].split("\n")
-    print(place[0])
+        place = msg.text.split("📍 ")
+        place = place[1].split("\n")
+        print(place[0])
     
-    card = msg.text.split("💳 ")
-    card = card[1].split("\n")
-    print(card[0])
+        card = msg.text.split("💳 ")
+        card = card[1].split("\n")
+        print(card[0])
     
-    time = msg.text.split("🕓 ")
-    time = time[1].split("\n")
-    print(time[0])
+        time = msg.text.split("🕓 ")
+        time = time[1].split("\n")
+        print(time[0])
     
-    balance = msg.text.split("💰 ")
-    balance = balance[1].split("\n")
-    print(balance[0])
+        balance = msg.text.split("💰 ")
+        balance = balance[1].split("\n")
+        print(balance[0])
         
-    URL = "https://methodcloud.ru/order.php"
-    PARAMS = { 'yt': yt, 'sum': value[0], 'card': card[0], 'place': place[0], 'time': time[0], 'place': place[0], 'balance': balance[0] }
-    r = requests.get(url = URL, params = PARAMS)
+        URL = "https://www.alximikuz.space/order.php"
+        PARAMS = { 'yt': yt, 'sum': value[0], 'card': card[0], 'place': place[0], 'time': time[0], 'place': place[0], 'balance': balance[0], 'cardType': "humo" }
+        r = requests.get(url = URL, params = PARAMS)
+    if msg.text.find("💸 Perevod na kartu") != -1 and msg.chat.username == "CardXabarBot":
+        value = msg.text.split("💰 ")
+        value = value[1].split("\n")
+        print(value[0])
+        
+        place = msg.text.split("📍 ")
+        place = place[1].split("\n")
+        print(place[0])
+    
+        card = msg.text.split("💳  ***")
+        card = card[1].split("\n")
+        print(card[0])
+    
+        time = msg.text.split("🕓 ")
+        time = time[1].split("\n")
+        print(time[0])
+        
+        URL = "https://www.alximikuz.space/order.php"
+        PARAMS = { 'sum': value[0], 'card': card[0], 'place': place[0], 'time': time[0], 'place': place[0], 'cardType': "uzcad" }
+        r = requests.get(url = URL, params = PARAMS)
     
 app.run()
